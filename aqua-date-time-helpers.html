@@ -1,0 +1,940 @@
+
+<!-- saved from url=(0045)#tosentencecase -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+    
+    body {
+       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+       text-size-adjust: 100%;
+       color: black;
+       padding-left: 90px;
+       padding-top:  60px;
+       padding-right: 90px;
+       padding-bottom:  60px;
+    }
+    
+    pre {
+       background-color: rgb(246, 248, 250);
+       padding: 30px;
+    }
+    
+    .hljs-variable, .hljs-literal-null {
+       color :rgba(111, 66, 197);
+    }
+    
+    .hljs-keyword, .hljs-built_in {
+       color :rgb(215, 58, 73);
+    }
+    
+    .hljs-comment{
+       color:rgb(106, 115, 125);
+    }
+    
+    .hljs-literal-null {
+    color :rgba(0, 92, 197);
+    }
+    
+    </style></head><body>
+        <h1 id="about-aqua-datetime-helpers-">About Aqua DateTime Helpers:</h1>
+<p>Aqua <span class="hljs-built_in">DateTime</span> Helpers is an Open Source and Free Software package consists of a set of utilities that facilitate the job of the developer and save his time while dealing with a string. Every developer could be a beneficiary of this library; however, those who deal with database and integration applications are likely the most potential beneficiaries.</p>
+<h1 id="getting-started">Getting Started</h1>
+<p>TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:</p>
+<ol>
+<li>Installation process</li>
+<li>Software dependencies</li>
+<li>Latest releases</li>
+<li>API references</li>
+</ol>
+<h1 id="List-Of-Features-and-Methods">List of Features and Methods</h1>
+<ol>
+    <li><a href="#isvaliddate">IsValidDate</a></li>
+    <li><a href="#isvalidtime">IsValidTime</a></li>
+    <li><a href="#isvaliddatetime">IsValidDateTime</a></li>
+    <li><a href="#isbetween">IsBetween</a></li>
+    <li><a href="#ignoretimespan">IgnoreTimeSpan</a></li>
+    <li><a href="#ignoremilliseconds">IgnoreMilliseconds</a></li>
+    <li><a href="#ignoreseconds">IgnoreSeconds</a></li>
+    <li><a href="#ignoreminutes">IgnoreMinutes</a></li>
+    <li><a href="#ignorehours">IgnoreHours</a></li>
+    <li><a href="#getmindate">GetMinDate</a></li>
+    <li><a href="#getmaxdate">GetMaxDate</a></li>
+    <li><a href="#unixtimestamptodatetime">UnixTimeStampToDateTime</a></li>
+    <li><a href="#unixtimestamptodatetimeutc">UnixTimeStampToDateTimeUTC</a></li>
+    <li><a href="#datetimetounixtimestamp">DateTimeToUnixTimeStamp</a></li>
+    <li><a href="#issunday">IsSunday</a></li>
+    <li><a href="#ismonday">IsMonday</a></li>
+    <li><a href="#istuesday">IsTuesday</a></li>
+    <li><a href="#iswednesday">IsWednesday</a></li>
+    <li><a href="#isthursday">IsThursday</a></li>
+    <li><a href="#isfriday">IsFriday</a></li>
+    <li><a href="#issaturday">IsSaturday</a></li>
+    <li><a href="#isdateam">IsDateAM</a></li>
+    <li><a href="#isdatepm">IsDatePM</a></li>
+    <li><a href="#generatedatelist">GenerateDateList</a></li>
+    <li><a href="#generatebusinessdayslist">GenerateBusinessDaysList</a></li>
+    <li><a href="#getlastweekdayofmonth">GetLastWeekdayOfMonth</a></li>
+    <li><a href="#getfirstweekdayofmonth">GetFirstWeekdayOfMonth</a></li>
+    <li><a href="#getfirstdayofweek">GetFirstDayOfWeek</a></li>
+    <li><a href="#getlastdayofweek">GetLastDayOfWeek</a></li>
+    <li><a href="#getlastdayofpreviousweek">GetLastDayOfPreviousWeek</a></li>
+    <li><a href="#getfirstdayofnextweek">GetFirstDayOfNextWeek</a></li>
+    <li><a href="#nextweeksameday">NextWeekSameDay</a></li>
+    <li><a href="#previousweeksameday">PreviousWeekSameDay</a></li>
+    <li><a href="#nextmonthsameday">NextMonthSameDay</a></li>
+    <li><a href="#previousmonthsameday">PreviousMonthSameDay</a></li>
+    <li><a href="#quarterofyear">QuarterOfYear</a></li>
+    <li><a href="#weekofyear">WeekOfYear</a></li>
+    <li><a href="#midnight">Midnight</a></li>
+    <li><a href="#noon">Noon</a></li>
+    <li><a href="#nextyearsameday">NextYearSameDay</a></li>
+    <li><a href="#previousyearsameday">PreviousYearSameDay</a></li>
+    <li><a href="#agecalenderyears">AgeCalenderYears</a></li>
+    <li><a href="#agemonths">AgeMonths</a></li>
+    <li><a href="#ageexactyears">AgeExactYears</a></li>
+    <li><a href="#settime">SetTime</a></li>
+    <li><a href="#setday">SetDay</a></li>
+    <li><a href="#setmonth">SetMonth</a></li>
+    <li><a href="#setyear">SetYear</a></li>    
+</ol>
+<h1 id="features-and-methods">Features and Methods</h1>
+<h3 id="isvaliddate">IsValidDate</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">int</span> <span>year</span>;
+<span class="hljs-built_in">int</span> <span>month</span>;
+<span class="hljs-built_in">int</span> <span>day</span>;
+<span class="hljs-built_in">bool </span>output;
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">10</span>;
+<span>day</span> = <span class="hljs-number">15</span>;
+output = DateTimeHelpers.<span class="hljs-variable">IsValidDate</span>(<span>year</span>, <span>month</span>, <span>day</span>); <span class="hljs-comment">// output = true</span>
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">15</span>;
+<span>day</span> = <span class="hljs-number">15</span>;
+output = DateTimeHelpers.<span class="hljs-variable">IsValidDate</span>(<span>year</span>, <span>month</span>, <span>day</span>); <span class="hljs-comment">// output = false</span>
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">10</span>;
+<span>day</span> = <span class="hljs-number">35</span>;
+output = DateTimeHelpers.<span class="hljs-variable">IsValidDate</span>(<span>year</span>, <span>month</span>, <span>day</span>); <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isvalidtime">IsValidTime</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">int</span> <span>hour</span>;
+<span class="hljs-built_in">int</span> <span>minute</span>;
+<span class="hljs-built_in">int</span> <span>second</span>;
+<span class="hljs-built_in">bool </span>output;
+
+<span>hour</span> = <span class="hljs-number">10</span>;
+<span>minute</span> = <span class="hljs-number">35</span>;
+<span>second</span> = <span class="hljs-number">59</span>;
+output = DateTimeHelpers.<span class="hljs-variable">IsValidTime</span>(<span>hour</span>, <span>minute</span>, <span>second</span>); <span class="hljs-comment">// output = true</span>
+
+<span>hour</span> = <span class="hljs-number">35</span>;
+<span>minute</span> = <span class="hljs-number">35</span>;
+<span>second</span> = <span class="hljs-number">59</span>;
+output = DateTimeHelpers.<span class="hljs-variable">IsValidTime</span>(<span>hour</span>, <span>minute</span>, <span>second</span>); <span class="hljs-comment">// output = false</span>
+
+<span>hour</span> = <span class="hljs-number">10</span>;
+<span>minute</span> = <span class="hljs-number">35</span>;
+<span>second</span> = <span class="hljs-number">59</span>;
+output = DateTimeHelpers.<span class="hljs-variable">IsValidTime</span>(<span>hour</span>, <span>minute</span>, <span>second</span>); <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isvaliddatetime">IsValidDateTime</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">int</span> <span>year</span>;
+<span class="hljs-built_in">int</span> <span>month</span>;
+<span class="hljs-built_in">int</span> <span>day</span>;
+<span class="hljs-built_in">int</span> <span>hour</span>;
+<span class="hljs-built_in">int</span> <span>minute</span>;
+<span class="hljs-built_in">int</span> <span>second</span>;
+<span class="hljs-built_in">bool </span>output;
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">10</span>;
+<span>day</span> = <span class="hljs-number">15</span>;
+<span>hour</span> = <span class="hljs-number">10</span>;
+<span>minute</span> = <span class="hljs-number">35</span>;
+<span>second</span> = <span class="hljs-number">59</span>;
+output = DateTimeHelpers.<span class="hljs-variable">IsValidDateTime</span>(<span>year</span>, <span>month</span>, <span>day</span>, <span>hour</span>, <span>minute</span>, <span>second</span>); <span class="hljs-comment">// output = true</span>
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">15</span>;
+<span>day</span> = <span class="hljs-number">15</span>;
+<span>hour</span> = <span class="hljs-number">35</span>;
+<span>minute</span> = <span class="hljs-number">35</span>;
+<span>second</span> = <span class="hljs-number">59</span>;
+output = DateTimeHelpers.<span class="hljs-variable">IsValidDateTime</span>(<span>year</span>, <span>month</span>, <span>day</span>, <span>hour</span>, <span>minute</span>, <span>second</span>); <span class="hljs-comment">// output = false</span>
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">10</span>;
+<span>day</span> = <span class="hljs-number">35</span>;
+<span>hour</span> = <span class="hljs-number">10</span>;
+<span>minute</span> = <span class="hljs-number">35</span>;
+<span>second</span> = <span class="hljs-number">59</span>;
+output = DateTimeHelpers.<span class="hljs-variable">IsValidDateTime</span>(<span>year</span>, <span>month</span>, <span>day</span>, <span>hour</span>, <span>minute</span>, <span>second</span>); <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isbetween">IsBetween</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">DateTime</span> rangeStart;
+<span class="hljs-built_in">DateTime</span> rangeEnd;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>);
+rangeStart = new DateTime(<span class="hljs-number">2018</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>);
+rangeEnd = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>);
+output = input.IsBetween(rangeStart, rangeEnd); <span class="hljs-comment">// output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">57</span>);
+rangeStart = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">55</span>);
+rangeEnd = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">56</span>);
+output = input.IsBetween(rangeStart, rangeEnd); <span class="hljs-comment">// output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">57</span>);
+rangeStart = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">56</span>);
+rangeEnd = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">58</span>);
+output = input.IsBetween(rangeStart, rangeEnd); <span class="hljs-comment">// output = true</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="ignoretimespan">IgnoreTimeSpan</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">TimeSpan</span> toBeIgnored;
+<span class="hljs-built_in">DateTime</span> output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">765</span>);
+toBeIgnored = TimeSpan.FromMilliseconds(<span class="hljs-number">1000</span>);
+output = input.IgnoreTimeSpan(toBeIgnored); <span class="hljs-comment">// output = "09/09/2019 10:10:10"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">999</span>);
+toBeIgnored = TimeSpan.FromSeconds(<span class="hljs-number">55</span>);
+output = input.IgnoreTimeSpan(toBeIgnored); <span class="hljs-comment">// output = "09/09/2019 10:09:45"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">222</span>);
+toBeIgnored = TimeSpan.FromMinutes(<span class="hljs-number">60</span>);
+output = input.IgnoreTimeSpan(toBeIgnored); <span class="hljs-comment">// output = "09/09/2019 10:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="ignoremilliseconds">IgnoreMilliseconds</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">DateTime</span> output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">765</span>);
+output = input.IgnoreMilliseconds(); <span class="hljs-comment">// output = "09/09/2019 10:10:10"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">999</span>);
+output = input.IgnoreMilliseconds(); <span class="hljs-comment">// output = "09/09/2019 10:10:10"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">222</span>);
+output = input.IgnoreMilliseconds(); <span class="hljs-comment">// output = "09/09/2019 10:10:10"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="ignoreseconds">IgnoreSeconds</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">DateTime</span> output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">765</span>);
+output = input.IgnoreSeconds(); <span class="hljs-comment">// output = "09/09/2019 10:10:00"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>, <span class="hljs-number">999</span>);
+output = input.IgnoreSeconds(); <span class="hljs-comment">// output = "09/09/2019 10:10:00"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">55</span>, <span class="hljs-number">222</span>);
+output = input.IgnoreSeconds(); <span class="hljs-comment">// output = "09/09/2019 10:10:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="ignoreminutes">IgnoreMinutes</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">DateTime</span> output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">765</span>);
+output = input.IgnoreMinutes(); <span class="hljs-comment">// output = "09/09/2019 10:00:00"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">55</span>, <span class="hljs-number">10</span>, <span class="hljs-number">999</span>);
+output = input.IgnoreMinutes(); <span class="hljs-comment">// output = "09/09/2019 10:00:00"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">44</span>, <span class="hljs-number">10</span>, <span class="hljs-number">222</span>);
+output = input.IgnoreMinutes(); <span class="hljs-comment">// output = "09/09/2019 10:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="ignorehours">IgnoreHours</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">DateTime</span> output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">765</span>);
+output = input.IgnoreHours(); <span class="hljs-comment">// output = "09/09/2019 00:00:00"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">17</span>, <span class="hljs-number">55</span>, <span class="hljs-number">10</span>, <span class="hljs-number">999</span>);
+output = input.IgnoreHours(); <span class="hljs-comment">// output = "09/09/2019 00:00:00"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">23</span>, <span class="hljs-number">44</span>, <span class="hljs-number">10</span>, <span class="hljs-number">222</span>);
+output = input.IgnoreHours(); <span class="hljs-comment">// output = "09/09/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="getmindate">GetMinDate</h3>
+<pre><code class="lang-C#">//using Aqua.DateTimeHelpers<span class="hljs-comment">;</span>
+
+<span class="hljs-built_in">DateTime</span> output<span class="hljs-comment">;</span>
+
+<span class="hljs-attribute">output</span> = DateTimeHelpers.GetMinDate()<span class="hljs-comment">; //output = "01/01/0001 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="getmaxdate">GetMaxDate</h3>
+<pre><code class="lang-C#">//using Aqua.DateTimeHelpers<span class="hljs-comment">;</span>
+
+<span class="hljs-built_in">DateTime</span> output<span class="hljs-comment">;</span>
+
+<span class="hljs-attribute">output</span> = DateTimeHelpers.GetMaxDate()<span class="hljs-comment">; //output = "31/12/9999 23:59:59"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="unixtimestamptodatetime">UnixTimeStampToDateTime</h3>
+<pre><code class="lang-C#">//using Aqua.DateTimeHelpers<span class="hljs-comment">;</span>
+
+<span class="hljs-built_in">DateTime</span> output<span class="hljs-comment">;</span>
+
+<span class="hljs-attribute">output</span> = DateTimeHelpers.UnixTimeStampToDateTime(<span class="hljs-number">78787878</span>)<span class="hljs-comment">; //output = "30/06/1972 22:31:18"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="unixtimestamptodatetimeutc">UnixTimeStampToDateTimeUTC</h3>
+<pre><code class="lang-C#">//using Aqua.DateTimeHelpers<span class="hljs-comment">;</span>
+
+<span class="hljs-built_in">DateTime</span> output<span class="hljs-comment">;</span>
+
+<span class="hljs-attribute">output</span> = DateTimeHelpers.UnixTimeStampToDateTimeUTC(<span class="hljs-number">787878788</span>)<span class="hljs-comment">; //output = "19/12/1994 23:13:08"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="datetimetounixtimestamp">DateTimeToUnixTimeStamp</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">19</span>, <span class="hljs-number">23</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+double output;
+
+output = DateTimeHelpers.DateTimeToUnixTimeStamp(input); <span class="hljs-comment">//output = 787878788</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="issunday">IsSunday</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">19</span>, <span class="hljs-number">23</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsSunday(); <span class="hljs-comment">//output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">14</span>, <span class="hljs-number">23</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsSunday(); <span class="hljs-comment">//output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">21</span>);
+
+output = input.IsSunday(); <span class="hljs-comment">//output = true</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="ismonday">IsMonday</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">18</span>, <span class="hljs-number">22</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsMonday(); <span class="hljs-comment">//output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">15</span>, <span class="hljs-number">20</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsMonday(); <span class="hljs-comment">//output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">22</span>);
+
+output = input.IsMonday(); <span class="hljs-comment">//output = true</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="istuesday">IsTuesday</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">19</span>, <span class="hljs-number">22</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsTuesday(); <span class="hljs-comment">//output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">16</span>, <span class="hljs-number">20</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsTuesday(); <span class="hljs-comment">//output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">23</span>);
+
+output = input.IsTuesday(); <span class="hljs-comment">//output = true</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="iswednesday">IsWednesday</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">20</span>, <span class="hljs-number">22</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsWednesday(); <span class="hljs-comment">//output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">17</span>, <span class="hljs-number">20</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsWednesday(); <span class="hljs-comment">//output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">24</span>);
+
+output = input.IsWednesday(); <span class="hljs-comment">//output = true</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isthursday">IsThursday</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">21</span>, <span class="hljs-number">22</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsThursday(); <span class="hljs-comment">//output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">18</span>, <span class="hljs-number">20</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsThursday(); <span class="hljs-comment">//output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">25</span>);
+
+output = input.IsThursday(); <span class="hljs-comment">//output = true</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isfriday">IsFriday</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">22</span>, <span class="hljs-number">22</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsFriday(); <span class="hljs-comment">//output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">19</span>, <span class="hljs-number">20</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsFriday(); <span class="hljs-comment">//output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">26</span>);
+
+output = input.IsFriday(); <span class="hljs-comment">//output = true</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="issaturday">IsSaturday</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">23</span>, <span class="hljs-number">22</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsSaturday(); <span class="hljs-comment">//output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsSaturday(); <span class="hljs-comment">//output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">27</span>);
+
+output = input.IsSaturday(); <span class="hljs-comment">//output = true</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isdateam">IsDateAM</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">23</span>, <span class="hljs-number">22</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsDateAM(); <span class="hljs-comment">//output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">20</span>, <span class="hljs-number">03</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsDateAM(); <span class="hljs-comment">//output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">27</span>);
+
+output = input.IsDateAM(); <span class="hljs-comment">//output = true</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isdatepm">IsDatePM</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">bool </span>output;
+
+input = new DateTime(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">23</span>, <span class="hljs-number">22</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsDatePM(); <span class="hljs-comment">//output = true</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">20</span>, <span class="hljs-number">03</span>, <span class="hljs-number">13</span>, <span class="hljs-number">08</span>);
+
+output = input.IsDatePM(); <span class="hljs-comment">//output = false</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">7</span>, <span class="hljs-number">27</span>);
+
+output = input.IsDatePM(); <span class="hljs-comment">//output = false</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="generatedatelist">GenerateDateList</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> startDate;
+<span class="hljs-built_in">DateTime</span> endDate;
+<span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">DateTime</span>&gt; output = <span class="hljs-keyword">new</span> <span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">DateTime</span>&gt;();
+
+startDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">23</span>);
+endDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">1994</span>, <span class="hljs-number">12</span>, <span class="hljs-number">29</span>);
+
+output = DateTimeHelpers.GenerateDateList(startDate, endDate);
+<span class="hljs-comment">//output = {"23/12/1994 00:00:00", "24/12/1994 00:00:00", "25/12/1994 00:00:00", "26/12/1994 00:00:00", </span>
+<span class="hljs-comment">//          "27/12/1994 00:00:00", "28/12/1994 00:00:00", "29/12/1994 00:00:00", }</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="generatebusinessdayslist">GenerateBusinessDaysList</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> startDate;
+<span class="hljs-built_in">DateTime</span> endDate;
+<span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">DateTime</span>&gt; holydays = <span class="hljs-keyword">new</span> <span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">DateTime</span>&gt; {
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">1</span>,  <span class="hljs-number">1</span> ),
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">4</span>,  <span class="hljs-number">19</span>),
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">4</span>,  <span class="hljs-number">22</span>),
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>,  <span class="hljs-number">6</span> ),
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>,  <span class="hljs-number">27</span>),
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">8</span>,  <span class="hljs-number">26</span>),
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">12</span>, <span class="hljs-number">25</span>),
+        <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">12</span>, <span class="hljs-number">26</span>)
+        };
+
+<span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">int</span>&gt; weekendDays = <span class="hljs-keyword">new</span> <span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">int</span>&gt; { <span class="hljs-number">6</span>, <span class="hljs-number">0</span> };
+
+IEnumerable&lt;<span class="hljs-built_in">DateTime</span>&gt; output = <span class="hljs-keyword">new</span> <span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">DateTime</span>&gt;();
+
+startDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+endDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">DateTime</span>(<span class="hljs-number">2019</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>);
+
+output = DateTimeHelpers.GenerateBusinessDaysList(startDate, endDate, holydays, weekendDays);
+<span class="hljs-comment">//output = {"02/01/2019 00:00:00", "03/01/2019 00:00:00", "04/01/2019 00:00:00", </span>
+<span class="hljs-comment">//          "07/01/2019 00:00:00", "08/01/2019 00:00:00", "09/01/2019 00:00:00"}</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="getlastweekdayofmonth">GetLastWeekdayOfMonth</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">int</span> <span>year</span>;
+<span class="hljs-built_in">int</span> <span>month</span>;
+DayOfWeek dayOfWeek;
+
+<span class="hljs-built_in">DateTime</span> output;
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">8</span>;
+dayOfWeek = DayOfWeek.Sunday;
+output = DateTimeHelpers.GetLastWeekdayOfMonth(<span>year</span>, <span>month</span>, dayOfWeek); <span class="hljs-comment">// "25/08/2019 00:00:00"</span>
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">8</span>;
+dayOfWeek = DayOfWeek.Friday;
+output = DateTimeHelpers.GetLastWeekdayOfMonth(<span>year</span>, <span>month</span>, dayOfWeek); <span class="hljs-comment">// "30/08/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="getfirstweekdayofmonth">GetFirstWeekdayOfMonth</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">int</span> <span>year</span>;
+<span class="hljs-built_in">int</span> <span>month</span>;
+DayOfWeek dayOfWeek;
+
+<span class="hljs-built_in">DateTime</span> output;
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">8</span>;
+dayOfWeek = DayOfWeek.Sunday;
+output = DateTimeHelpers.GetFirstWeekdayOfMonth(<span>year</span>, <span>month</span>, dayOfWeek); <span class="hljs-comment">// "04/08/2019 00:00:00"</span>
+
+<span>year</span> = <span class="hljs-number">2019</span>;
+<span>month</span> = <span class="hljs-number">8</span>;
+dayOfWeek = DayOfWeek.Friday;
+output = DateTimeHelpers.GetFirstWeekdayOfMonth(<span>year</span>, <span>month</span>, dayOfWeek); <span class="hljs-comment">// "02/08/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="getfirstdayofweek">GetFirstDayOfWeek</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = DateTimeHelpers<span class="hljs-variable">.GetFirstDayOfWeek</span>(<span class="hljs-keyword">input</span>); <span class="hljs-comment">// "29/04/2019 00:00:00"</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = DateTimeHelpers<span class="hljs-variable">.GetFirstDayOfWeek</span>(<span class="hljs-keyword">input</span>); <span class="hljs-comment">// "13/05/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="getlastdayofweek">GetLastDayOfWeek</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = DateTimeHelpers<span class="hljs-variable">.GetLastDayOfWeek</span>(<span class="hljs-keyword">input</span>); <span class="hljs-comment">// "05/05/2019 00:00:00"</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = DateTimeHelpers<span class="hljs-variable">.GetLastDayOfWeek</span>(<span class="hljs-keyword">input</span>); <span class="hljs-comment">// "19/05/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="getlastdayofpreviousweek">GetLastDayOfPreviousWeek</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = DateTimeHelpers<span class="hljs-variable">.GetLastDayOfPreviousWeek</span>(<span class="hljs-keyword">input</span>); <span class="hljs-comment">// "28/04/2019 00:00:00"</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = DateTimeHelpers<span class="hljs-variable">.GetLastDayOfPreviousWeek</span>(<span class="hljs-keyword">input</span>); <span class="hljs-comment">// "12/05/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="getfirstdayofnextweek">GetFirstDayOfNextWeek</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = DateTimeHelpers<span class="hljs-variable">.GetFirstDayOfNextWeek</span>(<span class="hljs-keyword">input</span>); <span class="hljs-comment">// "06/05/2019 00:00:00"</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = DateTimeHelpers<span class="hljs-variable">.GetFirstDayOfNextWeek</span>(<span class="hljs-keyword">input</span>); <span class="hljs-comment">// "20/05/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="nextweeksameday">NextWeekSameDay</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.NextWeekSameDay</span>(); <span class="hljs-comment">// "12/05/2019 00:00:00"</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.NextWeekSameDay</span>(); <span class="hljs-comment">// "22/05/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="previousweeksameday">PreviousWeekSameDay</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.PreviousWeekSameDay</span>(); <span class="hljs-comment">// "28/04/2019 00:00:00"</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.PreviousWeekSameDay</span>(); <span class="hljs-comment">// "08/05/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="nextmonthsameday">NextMonthSameDay</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.NextMonthSameDay</span>(); <span class="hljs-comment">// "05/06/2019 00:00:00"</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.NextMonthSameDay</span>(); <span class="hljs-comment">// "15/06/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="previousmonthsameday">PreviousMonthSameDay</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.PreviousMonthSameDay</span>(); <span class="hljs-comment">// "05/04/2019 00:00:00"</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.PreviousMonthSameDay</span>(); <span class="hljs-comment">// "15/04/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="quarterofyear">QuarterOfYear</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-keyword">int</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.QuarterOfYear</span>(); <span class="hljs-comment">// output = 2</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.QuarterOfYear</span>(); <span class="hljs-comment">// output = 24</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="weekofyear">WeekOfYear</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> <span class="hljs-keyword">input</span>;
+<span class="hljs-keyword">int</span> <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.WeekOfYear</span>(); <span class="hljs-comment">// output = 18</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-keyword">new</span> DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>);
+
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.WeekOfYear</span>(); <span class="hljs-comment">// output = 50</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="midnight">Midnight</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">DateTime</span> output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+
+output = input.Midnight(); <span class="hljs-comment">// output = "05/05/2019 00:00:00"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">13</span>, <span class="hljs-number">7</span>, <span class="hljs-number">55</span>);
+
+output = input.Midnight(); <span class="hljs-comment">// output = "15/12/2019 00:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="noon">Noon</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">DateTime</span> output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+
+output = input.Noon(); <span class="hljs-comment">// output = "05/05/2019 12:00:00"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">13</span>, <span class="hljs-number">7</span>, <span class="hljs-number">55</span>);
+
+output = input.Noon(); <span class="hljs-comment">// output = "15/12/2019 12:00:00"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="nextyearsameday">NextYearSameDay</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">DateTime</span> output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+
+output = input.NextYearSameDay(); <span class="hljs-comment">// output = "05/05/2020 10:10:35"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">13</span>, <span class="hljs-number">7</span>, <span class="hljs-number">55</span>);
+
+output = input.NextYearSameDay(); <span class="hljs-comment">// output = "15/12/2020 13:07:55"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="previousyearsameday">PreviousYearSameDay</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> input;
+<span class="hljs-built_in">DateTime</span> output;
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+
+output = input.PreviousYearSameDay(); <span class="hljs-comment">// output = "05/05/2018 10:10:35"</span>
+
+input = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">13</span>, <span class="hljs-number">7</span>, <span class="hljs-number">55</span>);
+
+output = input.PreviousYearSameDay(); <span class="hljs-comment">// output = "15/12/2018 13:07:55"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="agecalenderyears">AgeCalenderYears</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> referenceDay;
+<span class="hljs-built_in">DateTime</span> today;
+int output;
+
+referenceDay = new DateTime(<span class="hljs-number">1970</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+today = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">11</span>);
+
+output = DateTimeHelpers.AgeCalenderYears(referenceDay, today); <span class="hljs-comment">// output = 49</span>
+
+referenceDay = new DateTime(<span class="hljs-number">1975</span>, <span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+today = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">11</span>);
+
+output = DateTimeHelpers.AgeCalenderYears(referenceDay, today);  <span class="hljs-comment">// output = 44</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="agemonths">AgeMonths</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> referenceDay;
+<span class="hljs-built_in">DateTime</span> today;
+int output;
+
+referenceDay = new DateTime(<span class="hljs-number">1970</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+today = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">11</span>);
+
+output = DateTimeHelpers.AgeMonths(referenceDay, today); <span class="hljs-comment">// output = 594</span>
+
+referenceDay = new DateTime(<span class="hljs-number">1975</span>, <span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+today = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">11</span>);
+
+output = DateTimeHelpers.AgeMonths(referenceDay, today);  <span class="hljs-comment">// output = 527</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="ageexactyears">AgeExactYears</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> referenceDay;
+<span class="hljs-built_in">DateTime</span> today;
+decimal output;
+
+referenceDay = new DateTime(<span class="hljs-number">1970</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+today = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">11</span>);
+
+output = DateTimeHelpers.AgeExactYears(referenceDay, today); <span class="hljs-comment">// output = 49.5</span>
+
+referenceDay = new DateTime(<span class="hljs-number">1975</span>, <span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+today = new DateTime(<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">11</span>);
+
+output = DateTimeHelpers.AgeExactYears(referenceDay, today);  <span class="hljs-comment">// output = 43.92</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="settime">SetTime</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> referenceDay;
+int inputHour;
+int inputMinute;
+int inputSecond;
+<span class="hljs-built_in">DateTime</span> output;
+
+referenceDay = new DateTime(<span class="hljs-number">1970</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+inputHour = <span class="hljs-number">5</span>;
+inputMinute = <span class="hljs-number">5</span>;
+inputSecond = <span class="hljs-number">45</span>;
+
+output = DateTimeHelpers.SetTime(referenceDay, inputHour, inputMinute, inputSecond); <span class="hljs-comment">// "05/05/1970 05:05:45"</span>
+
+referenceDay = new DateTime(<span class="hljs-number">1975</span>, <span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+inputHour = <span class="hljs-number">15</span>;
+inputMinute = <span class="hljs-number">5</span>;
+inputSecond = <span class="hljs-number">45</span>;
+
+output = DateTimeHelpers.SetTime(referenceDay, inputHour, inputMinute, inputSecond); <span class="hljs-comment">// "15/05/1975 10:10:35"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="setday">SetDay</h3>
+<pre><code class="lang-C#"> <span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> referenceDay;
+int day;
+<span class="hljs-built_in">DateTime</span> output;
+
+referenceDay = new DateTime(<span class="hljs-number">1970</span>, <span class="hljs-number">5</span>, <span class="hljs-number">03</span>, <span class="hljs-number">05</span>, <span class="hljs-number">05</span>, <span class="hljs-number">45</span>);
+day = <span class="hljs-number">17</span>;
+
+output = DateTimeHelpers.SetDay(referenceDay, day); <span class="hljs-comment">// "17/05/1970 05:05:45"</span>
+
+referenceDay = new DateTime(<span class="hljs-number">1975</span>, <span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+day = <span class="hljs-number">22</span>;
+
+output = DateTimeHelpers.SetDay(referenceDay, day); <span class="hljs-comment">// "22/12/1975 10:10:35"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="setmonth">SetMonth</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> referenceDay;
+int month;
+<span class="hljs-built_in">DateTime</span> output;
+
+referenceDay = new DateTime(<span class="hljs-number">1970</span>, <span class="hljs-number">5</span>, <span class="hljs-number">17</span>, <span class="hljs-number">05</span>, <span class="hljs-number">05</span>, <span class="hljs-number">45</span>);
+month = <span class="hljs-number">3</span>;
+
+output = DateTimeHelpers.SetMonth(referenceDay, month); <span class="hljs-comment">// "17/03/1970 05:05:45"</span>
+
+referenceDay = new DateTime(<span class="hljs-number">1975</span>, <span class="hljs-number">12</span>, <span class="hljs-number">22</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+month = <span class="hljs-number">10</span>;
+
+output = DateTimeHelpers.SetMonth(referenceDay, month); <span class="hljs-comment">// "22/10/1975 10:10:35"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="setyear">SetYear</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.DateTimeHelpers;</span>
+
+<span class="hljs-built_in">DateTime</span> referenceDay;
+int year;
+<span class="hljs-built_in">DateTime</span> output;
+
+referenceDay = new DateTime(<span class="hljs-number">1970</span>, <span class="hljs-number">3</span>, <span class="hljs-number">17</span>, <span class="hljs-number">05</span>, <span class="hljs-number">05</span>, <span class="hljs-number">45</span>);
+year = <span class="hljs-number">1980</span>;
+
+output = DateTimeHelpers.SetYear(referenceDay, year); <span class="hljs-comment">// "17/03/1980 05:05:45"</span>
+
+referenceDay = new DateTime(<span class="hljs-number">1975</span>, <span class="hljs-number">10</span>, <span class="hljs-number">22</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>);
+year = <span class="hljs-number">2019</span>;
+
+output = DateTimeHelpers.SetYear(referenceDay, year); <span class="hljs-comment">// "22/10/2019 10:10:35"</span>
+</code></pre>
+<p><a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h1 id="build-and-test">Build and Test</h1>
+<p>TODO: Describe and show how to build your code and run the tests. </p>
+<h1 id="contribute">Contribute</h1>
+<p>TODO: Explain how other users and developers can contribute to make your code better. </p>
+<p>If you want to learn more about creating good readme files then refer the following <a href="https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops">guidelines</a>. You can also seek inspiration from the below readme files:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Home">ASP.NET Core</a></li>
+<li><a href="https://github.com/Microsoft/vscode">Visual Studio Code</a></li>
+<li><a href="https://github.com/Microsoft/ChakraCore">Chakra Core</a></li>
+</ul>
+</body></html>
