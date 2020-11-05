@@ -1,0 +1,531 @@
+<html><head><style>
+
+   body {
+      color: black;
+      padding: 20px;
+   }
+   
+   pre {
+      background-color: rgb(246, 248, 250);
+      padding: 30px;
+   }
+   
+   .hljs-variable, .hljs-literal-null {
+      color :rgba(111, 66, 197);
+   }
+   
+   .hljs-keyword {
+      color :rgb(215, 58, 73);
+   }
+   
+   .hljs-comment{
+      color:rgb(106, 115, 125);
+   }
+   
+   .hljs-literal-null {
+   color :rgba(0, 92, 197);
+   }
+   
+   </style>
+   </head><body><h1 id="about-aqua-ipextensions-">About Aqua IPExtensions:</h1>
+<p>Aqua IP Extensions is an Open Source and Free Software package consists of a set of utilities that facilitate the job of the developer and save his time while dealing with both IP v4 and IP v6 addresses. Every developer could be a beneficiary of this library; however, those who deal with network and integration applications are likely the most potential beneficiaries.</p>
+<h1 id="getting-started">Getting Started</h1>
+<p>TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:</p>
+<ol>
+<li>Installation process</li>
+<li>Software dependencies</li>
+<li>Latest releases</li>
+<li>API references</li>
+</ol>
+<h1 id="List-Of-Features-and-Methods">List of Features and Methods</h1>
+<ol>
+   <li><a href="#IsValidIPv4">isvalidipv4</a></li>
+   <li><a href="#IsValidIPv6">isvalidipv6</a></li>
+   <li><a href="#IsValidIPv4Orv6">isvalidipv4orv6</a></li>
+   <li><a href="#IsIPv4LinkLocalAddress">isipv4linklocaladdress</a></li>
+   <li><a href="#IsIPv6LinkLocalAddress">isipv6linklocaladdress</a></li>
+   <li><a href="#IsLinkLocalAddress">islinklocaladdress</a></li>
+   <li><a href="#IsIPv4LoopBack">isipv4loopback</a></li>
+   <li><a href="#IsIPv6LoopBack">isipv6loopback</a></li>
+   <li><a href="#IsLoopBack">isloopback</a></li>
+   <li><a href="#IsLocalHostv4">islocalhostv4</a></li>
+   <li><a href="#IsLocalHostv6">islocalhostv6</a></li>
+   <li><a href="#IsLocalHost">islocalhost</a></li>
+   <li><a href="#IsIPv4IsZero">isipv4iszero</a></li>
+   <li><a href="#IsIPv6IsZero">isipv6iszero</a></li>
+   <li><a href="#IsIPisZero">isipiszero</a></li>
+   <li><a href="#IsValidSubnetIPv4Mask">isvalidsubnetipv4mask</a></li>
+   <li><a href="#IsValidSubnetIPv6Mask">isvalidsubnetipv6mask</a></li>
+   <li><a href="#IsValidSubnetMask">isvalidsubnetmask</a></li>
+   <li><a href="#IsBelongsToSubnet">isbelongstosubnet</a></li>   
+</ol>
+<h1 id="features-and-methods">Features and Methods</h1>
+<h3 id="isvalidipv4">IsNullOrEmpty</h3>
+<p>IsNullOrEmpty is an extension method, equivalent for the traditional <code>string.IsNullOrEmpty()</code> static method. Returns true if the string examined is null or empty, otherwise returns false.</p>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4</span>();  <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"192.168.1.5"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4</span>();  <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"10.0.0.55"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4</span>();  <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"231.111.12.10"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4</span>();  <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"0.0.0.0"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4</span>();  <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4</span>();  <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"342"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4</span>();  <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"300.1.1200"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4</span>();  <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isvalidipv6">IsValidIPv6</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv6</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"2001:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"2001:0db8:85a3:0000:0000::2:7335"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::1234:5678"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::1ZXE"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv6</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv6</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isvalidipv4orv6">IsValidIPv4Orv6</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4Orv6</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"192.168.1.5"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4Orv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"2001:0db8:85a3:0000:0000::2:7335"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4Orv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4Orv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4Orv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4Orv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::1ZXE"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4Orv6</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidIPv4Orv6</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isipv4linklocaladdress">IsIPv4LinkLocalAddress</h3>
+<pre><code class="lang-C#"> <span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LinkLocalAddress</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"192.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isipv6linklocaladdress">IsIPv6LinkLocalAddress</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LinkLocalAddress</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"febf:ffff:ffff:1111:ffff:ffff:1111:1111"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LinkLocalAddress</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="islinklocaladdress">IsLinkLocalAddress</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLinkLocalAddress</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLinkLocalAddress</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLinkLocalAddress</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isipv4loopback">IsIPv4LoopBack</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LoopBack</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isipv6loopback">IsIPv6LoopBack</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LoopBack</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6LoopBack</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isloopback">IsLoopBack</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLoopBack</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLoopBack</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLoopBack</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLoopBack</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="islocalhostv4">IsLocalHostv4</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv4</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv4</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv4</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv4</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv4</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv4</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="islocalhostv6">IsLocalHostv6</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv6</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv6</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv6</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv6</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv6</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHostv6</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="islocalhost">IsLocalHost</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHost</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHost</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHost</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHost</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::1"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHost</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"M11C:0db8:85a3:0000:0000:8a2e:0370:7334"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsLocalHost</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isipv4iszero">IsIPv4IsZero</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4IsZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4IsZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4IsZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"0.0.0.0"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4IsZero</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4IsZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"0000:0000:0000:0000:0000:0000:0000:0000"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv4IsZero</span>();           <span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isipv6iszero">IsIPv6IsZero</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6IsZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6IsZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6IsZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"0.0.0.0"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6IsZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6IsZero</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"0000:0000:0000:0000:0000:0000:0000:0000"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPv6IsZero</span>();           <span class="hljs-comment">// output = true</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isipiszero">IsIPisZero</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPisZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"fe81:ffff:ffff:ffff:ffff:ffff:1111:ffff"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPisZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"169.254.1.99"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPisZero</span>();           <span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"0.0.0.0"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPisZero</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"::"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPisZero</span>();           <span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"0000:0000:0000:0000:0000:0000:0000:0000"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsIPisZero</span>();           <span class="hljs-comment">// output = true</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isvalidsubnetipv4mask">IsValidSubnetIPv4Mask</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidSubnetIPv4Mask</span>();<span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"192.168.5.85/10"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidSubnetIPv4Mask</span>();<span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"192.168.5.85/40"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidSubnetIPv4Mask</span>();<span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isvalidsubnetipv6mask">IsValidSubnetIPv6Mask</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidSubnetIPv6Mask</span>();<span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"2001:db8:abcd:0012::0/64"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidSubnetIPv6Mask</span>();<span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"2001:db8:abcd:0012::0/640"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidSubnetIPv6Mask</span>();<span class="hljs-comment">// output = false</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isvalidsubnetmask">IsValidSubnetMask</h3>
+<pre><code class="lang-C#"><span class="hljs-comment">//using Aqua.IPExtensions;</span>
+
+<span class="hljs-keyword">string</span> <span class="hljs-keyword">input</span>;
+bool <span class="hljs-keyword">output</span>;
+
+<span class="hljs-keyword">input</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidSubnetMask</span>();<span class="hljs-comment">// output = false</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"2001:db8:abcd:0012::0/64"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidSubnetMask</span>();<span class="hljs-comment">// output = true</span>
+
+<span class="hljs-keyword">input</span> = <span class="hljs-string">"192.168.5.85/10"</span>;
+<span class="hljs-keyword">output</span> = <span class="hljs-keyword">input</span><span class="hljs-variable">.IsValidSubnetMask</span>();<span class="hljs-comment">// output = true</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h3 id="isbelongstosubnet">IsBelongsToSubnet</h3>
+<pre><code class="lang-C#">//using Aqua.IPExtensions<span class="hljs-comment">;</span>
+
+IPAddress input<span class="hljs-comment">;</span>
+bool output<span class="hljs-comment">;</span>
+
+<span class="hljs-attribute">input</span> = IPAddress.Parse(<span class="hljs-string">"192.168.5.1"</span>)<span class="hljs-comment">;</span>
+<span class="hljs-attribute">output</span> = input.IsBelongsToSubnet(<span class="hljs-string">"192.168.5.85/10"</span>)<span class="hljs-comment">;    // output = true</span>
+
+<span class="hljs-attribute">input</span> = IPAddress.Parse(<span class="hljs-string">"192.168.5.1"</span>)<span class="hljs-comment">;</span>
+<span class="hljs-attribute">output</span> = input.IsBelongsToSubnet(<span class="hljs-string">"200.168.5.85/10"</span>)<span class="hljs-comment">;    // output = false</span>
+
+<span class="hljs-attribute">input</span> = IPAddress.Parse(<span class="hljs-string">"2001:0DB8:DDDD:0012:0000:1111:0000:0000"</span>)<span class="hljs-comment">; </span>
+<span class="hljs-attribute">output</span> = input.IsBelongsToSubnet(<span class="hljs-string">"2001:db8:abcd:0012::0/10"</span>)<span class="hljs-comment">;       // output = true</span>
+</code></pre>
+<p>:back:<a href="#List-Of-Features-and-Methods">Back to the Full List of Features</a></p>
+<h1 id="build-and-test">Build and Test</h1>
+<p>TODO: Describe and show how to build your code and run the tests. </p>
+<h1 id="contribute">Contribute</h1>
+<p>TODO: Explain how other users and developers can contribute to making your code better. </p>
+<p>If you want to learn more about creating good readme files then refer to the following <a href="https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops">guidelines</a>. You can also seek inspiration from the below readme files:</p>
+<ul>
+<li><a href="https://github.com/aspnet/Home">ASP.NET Core</a></li>
+<li><a href="https://github.com/Microsoft/vscode">Visual Studio Code</a></li>
+<li><a href="https://github.com/Microsoft/ChakraCore">Chakra Core</a></li>
+</ul>
+</body></html>
